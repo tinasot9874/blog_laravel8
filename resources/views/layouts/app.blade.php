@@ -20,11 +20,14 @@
         <ul class="flex items-center">
             @auth
                 <li><a href="" class="p-3">{{auth()->user()->username}}</a></li>
-                <li><a href="" class="p-3">Logout</a></li>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button>Logout</button>
+                </form>
             @endauth
 
             @guest
-            <li><a href="" class="p-3">Login</a></li>
+            <li><a href="{{ route('login')}}" class="p-3">Login</a></li>
             <li><a href="{{ route('register') }}" class="p-3">Register</a></li>
             @endguest
 
